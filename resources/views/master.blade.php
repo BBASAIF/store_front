@@ -30,15 +30,28 @@
     }
 
     img.slider-img{
-        height: 700px !important;
-    }
+         height: 700px !important;
+     }
 
     .custom-product{
-        height: 900px;
+        height: 1000px;
     }
 
     .slider-text{
         background-color: #3156667d !important;
+    }
+
+    .trending-image{
+        height: 150px;
+    }
+
+    .trending-item{
+        float: left;
+        width: 25%;
+    }
+
+    .trending-wrapper{
+        margin: 30px;
     }
 </style>
 </html>
