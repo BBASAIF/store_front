@@ -13,9 +13,9 @@ class UserController extends Controller
         if($user|| Hash::check($req->password,$user->password))
         {
             $req->session()->put('user',$user);
-            return "Username or Password is Correct";
+            return redirect('/');
+            // return "Username or Password is Correct";
         }else{
-            // return redirect('/');
             return "Username or Password is not Correct";
 
         }
