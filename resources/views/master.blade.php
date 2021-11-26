@@ -53,5 +53,14 @@
     .trending-wrapper{
         margin: 30px;
     }
+
+    .detail-img{
+        height: 300px;
+    }
+
+    .detail-container{
+        height: 400px;
+        margin-top: 50px;
+    }
 </style>
 </html>
