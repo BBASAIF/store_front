@@ -1,6 +1,9 @@
 <?php
     use App\Http\Controllers\ProductController;
-    $total= ProductController::cartItem();
+    $total=0;
+    if(Session::has('user')){
+        $total= ProductController::cartItem();
+    }
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -17,13 +20,29 @@
           <a class="nav-link" href="#">Orders</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="nav-link" href="#">Cart({{$total}})</a></li>
-      </ul>
+        <form class="d-flex" action="/search">
+            <input name ="query" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a class="nav-link" href="#">Cart({{$total}})</a></li>
+            @if(Session::has('user'))
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            @else
+
+            @endif
+        </ul>
+
     </div>
   </div>
 </nav>
