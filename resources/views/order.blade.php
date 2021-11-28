@@ -22,17 +22,18 @@
                 </tr>
             </tbody>
         </table>
-        <form>
+        <form action="/place_order" method="POST">
+            @csrf
             <div class="form-group">
-                <textarea type="email" class="form-control" placeholder="Enter Your Address"></textarea>
+                <textarea name="address" class="form-control" placeholder="Enter Your Address"></textarea>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Payment Method</label><br>
-                <input type="radio" name="payment"><span>Visa</span><br>
-                <input type="radio" name="payment"><span>MAster Card</span><br>
-                <input type="radio" name="payment"><span>PayPal</span><br>
+                <label>Payment Method</label><br>
+                <input type="radio" value="cash" name="payment" checked><span style="margin-left: 10px;">Visa</span><br>
+                <input type="radio" value="cash" name="payment"><span style="margin-left: 10px;">MAster Card</span><br>
+                <input type="radio" value="cash" name="payment"><span style="margin-left: 10px;">PayPal</span><br>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Order Now</button>
         </form>
     </div>
 </div>

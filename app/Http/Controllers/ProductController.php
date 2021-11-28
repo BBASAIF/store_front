@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Order;
 use Session;
 
 class ProductController extends Controller
@@ -64,6 +65,38 @@ class ProductController extends Controller
             ->where('cart.user_id',$userId)
             ->sum('products.price');
             return view('order',['total'=>$total]);
+        }else{
+            return redirect('/login');
+        }
+    }
+    function placeOrder(Request $req){
+        if($req->session()->has('user')){
+            $userId= Session::get('user')['id'];
+            $allCart= Cart::where('user_id',$userId)->get();
+            foreach($allCart as $cart){
+                $order= new Order;
+                $order-> product_id= $cart['product_id'];
+                $order-> user_id= $cart['user_id'];
+                $order-> status="pending";
+                $order-> payment_method=$req->payment;
+                $order-> payment_status="pending";
+                $order->address=$req->address;
+                $order->save();
+                Cart::where('user_id',$userId)->delete();
+            }
+            return redirect('/');
+        }else{
+            return redirect('/login');
+        }
+    }
+    function myOrders(Request $req){
+        if($req->session()->has('user')){
+            $userId=Session::get('user')['id'];
+            $orders= DB::table('orders')
+            ->join('products','orders.product_id','=','products.id')
+            ->where('orders.user_id',$userId)
+            ->get();
+            return view('myOrders',['orders'=>$orders]);
         }else{
             return redirect('/login');
         }
