@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -19,5 +20,13 @@ class UserController extends Controller
             return "Username or Password is not Correct";
 
         }
+    }
+    function register(Request $req){
+        $user = new User;
+        $user->name=$req->name;
+        $user->email=$req->email;
+        $user->password=Hash::make($req->password);
+        $user->save();
+        return redirect('/login');
     }
 }

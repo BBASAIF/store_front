@@ -38,7 +38,7 @@
                 </li>
             @else
                 <li>
-                    <a href="/login" class="nav-link">Login</a>
+                    <a href="/register" class="nav-link">Register</a>
                 </li>
             @endif
         </ul>
