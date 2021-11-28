@@ -35,7 +35,8 @@
      }
 
     .custom-product{
-        height: 1000px;
+        height: fit-content;
+        padding-bottom: 170px;
     }
 
     .slider-text{
@@ -62,6 +63,26 @@
     .detail-container{
         height: 400px;
         margin-top: 50px;
+    }
+
+    .Searched-item{
+        margin-bottom: 20px;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+    }
+
+    .sub-container {
+        position: relative;
+    }
+
+    .cart-list-devider{
+        border-bottom: 1px solid #adb5bd;
+        padding-bottom: 20px;
     }
 </style>
 </html>

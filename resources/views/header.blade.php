@@ -25,7 +25,7 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
-            <li><a class="nav-link" href="#">Cart({{$total}})</a></li>
+            <li><a class="nav-link" href="/cart">Cart({{$total}})</a></li>
             @if(Session::has('user'))
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
